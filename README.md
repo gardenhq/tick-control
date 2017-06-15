@@ -69,9 +69,9 @@ var literal = new TemplateLiteral("Hello ${world}")
 typeof literal // object
 'Hello ${world}' == literal.toString() // true
 literal.render(
-	{
-		world: "World!"
-	}
+    {
+        world: "World!"
+    }
 )
 
 ```
@@ -91,12 +91,12 @@ No reason... unless you want to do one of the following:
 ```
 function greatUI(template)
 {
-	var world = "World!";
-	return template.render(
-		{
-			world: world
-		}
-	);
+    var world = "World!";
+    return template.render(
+        {
+            world: world
+        }
+    );
 }
 
 // var native = `Hello ${world}`; // doh, where's world?
@@ -112,44 +112,44 @@ greatUI(template);
 ```html
 <!-- templates/index.html -->
 <p>
-	Hello ${world}
+    Hello ${world}
 </p>
 <ul>
-	${ 
-		items.map(
-			function(item)
-			{
-				return html'<li>' + item + '</li>';
-			}
-		)
-	}
+    ${ 
+        items.map(
+            function(item)
+            {
+                return html'<li>' + item + '</li>';
+            }
+        )
+    }
 </ul>
 ```
 --- split ---
 
 ```javascript
 fetch("template/index.html").then(
-	function(response)
-	{
-		return response.text()
-	}
+    function(response)
+    {
+        return response.text()
+    }
 ).then(
-	function(content)
-	{
-		var template = new TemplateLiteral(content);
-		template.transformer(html);
-		var tree = template.render(
-			{
-				world: "World!",
-				html: html,
-				items: [
-					"one",
-					"two",
-					"three"
-				]
-			}
-		);
-	}
+    function(content)
+    {
+        var template = new TemplateLiteral(content);
+        template.transformer(html);
+        var tree = template.render(
+            {
+                world: "World!",
+                html: html,
+                items: [
+                    "one",
+                    "two",
+                    "three"
+                ]
+            }
+        );
+    }
 )
 
 ```
@@ -192,8 +192,8 @@ app.templates.wodget:
 // index.js
 module.exports = function(widget, wodget)
 {
-	widget.render();
-	wodget.render();
+    widget.render();
+    wodget.render();
 }
 ```
 
@@ -213,7 +213,7 @@ or for the more functional inclined:
 
 ```
 console.log(
-	TemplateLiteral(document.querySelectorAll("#template").textContent, vars, html)
+    TemplateLiteral(document.querySelectorAll("#template").textContent, vars, html)
 )
 
 ```
@@ -266,21 +266,21 @@ console.log(str);
 ```javascript
 // use any 'promised require' such as @gardenhq/o
 Systemlike.import("@gardenhq/tick-control/index.js").then(
-	function(tickControl)
-	{
-		return tickControl(Systemlike.import.bind(Systemlike));
-	}
+    function(tickControl)
+    {
+        return tickControl(Systemlike.import.bind(Systemlike));
+    }
 ).then(
-	function(TemplateLiteral)
-	{
-		var template = new TemplateLiteral("Hello ${world}");
-		var str = template.render(
-    		{
-        		world: "World!"
-    		}
-		);
-		console.log(str);
-	}
+    function(TemplateLiteral)
+    {
+        var template = new TemplateLiteral("Hello ${world}");
+        var str = template.render(
+            {
+                world: "World!"
+            }
+        );
+        console.log(str);
+    }
 );
 ```
 
@@ -292,7 +292,7 @@ See [`@gardenhq/o`](https://greenhouse.gardenhq.io/o/) using `@gardenhq/willow`
 ```yaml
 # container.yaml
 imports:
-	- "@gardenhq/tick-control/container"
+    - "@gardenhq/tick-control/container"
 main:
   callable: "./index"
   arguments:
@@ -308,15 +308,15 @@ app.template:
 // index.js
 module.exports = function(template)
 {
-	return function()
-	{
-		var str = template.render(
-			{
-				world: "World!"
-			}
-		);
-		console.log(str);
-	} 
+    return function()
+    {
+        var str = template.render(
+            {
+                world: "World!"
+            }
+        );
+        console.log(str);
+    } 
 }
 ```
 
