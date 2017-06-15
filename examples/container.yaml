@@ -1,0 +1,22 @@
+imports:
+  - resource: "@gardenhq/tick-control/container.js"
+    version: "1.0.0"
+main:
+  callable: "./index"
+  arguments:
+    - "@app.templates:widget"
+    - "@app.templates:wodget"
+app.templates:
+  iterator: "@gardenhq.tick-control.iterator"
+  arguments:
+    - "#app.template"      # get everything tagged as a template and turn it into a renderable
+app.templates.widget:
+  object: "./components/widget/templates/index.html"
+  tags:
+    - name: "app.template" # this is the name of the tag, meaning this will get picked up by the iterator
+      key: "widget"        # this is the 'name' of your template
+app.templates.wodget:
+  object: "./components/wodget/templates/index.html"
+  tags:
+    - name: "app.template"
+      key: "wodget"

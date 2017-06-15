@@ -1,0 +1,18 @@
+
+<ul>
+    ${
+        `
+            <li>
+                1
+            </li>
+        `
+    }
+    ${
+        [2, 3].map(
+            function(item)
+            {
+                return `<li>${ item }</li>`
+            }
+        )
+    }
+</ul>

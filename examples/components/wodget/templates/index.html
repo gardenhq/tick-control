@@ -1,0 +1,15 @@
+<div>
+    <h1>
+        Hi I'm a ${name} wodget, I believe you know my friend widget?
+    </h1>
+    <ul>
+    ${
+        items.map(
+            function(item)
+            {
+                return `<li>${item}</li>`;
+            }
+        )
+    }
+    </ul>
+</div>

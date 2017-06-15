@@ -1,0 +1,37 @@
+{
+  "name": "@gardenhq/tick-control",
+  "version": "1.0.0",
+  "description": "Compile and render string templates. Currently mainly template literals as strings",
+  "author": {
+    "name": "GardenHQ",
+    "email": "gardener@gardenhq.io",
+    "url": "https://gardenhq.io/"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gardenhq/tick-control.git"
+  },
+  "devDependencies": {
+    "@gardenhq/o": "^6.3.0",
+    "@gardenhq/js-test-harness": "^2.2.0",
+    "hyperhtml": "^0.11.7",
+    "hyperscript": "^2.0.2",
+    "hyperx": "^2.3.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.3.0",
+    "mocha-multi": "^0.11.0"
+  },
+  "main": "./sync.js",
+  "keywords": [
+    "template-literals",
+    "ticks",
+    "backticks",
+    "gardenhq"
+  ],
+  "scripts": {
+    "test": "mkdir -p ./test/results && npm run story",
+    "story": "mocha --recursive -R mocha-multi --reporter-options tap=./test/results/story/mocha.tap,spec=- \"./test/story/**/*.js\""
+  },
+  "publishConfig": {}
+}

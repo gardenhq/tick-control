@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" xmlns:og="http://ogp.me/ns#">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>@gardenhq/tick-control</title>
+		
+        <link href="https://unpkg.com/mocha@2.2.5/mocha.css" rel="stylesheet" />
+        <script src="https://unpkg.com/mocha@2.2.5/mocha.js"></script>
+	</head>
+	<body>
+        <script src="https://unpkg.com/object-assign-polyfill@0.1.0/index.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/native-promise-only/0.8.1/npo.js"></script>
+		<script type="text/javascript"
+		    src="/node_modules/@gardenhq/o/o.js"
+	        data-module="/node_modules/@gardenhq/o/r.js"
+	        data-export="o"
+	     >
+	    </script>
+        <script>
+            mocha.setup(
+                {
+                    ui: "bdd"
+                }
+            )
+        </script>
+        <div id="mocha"></div>
+	    <script type="text/javascript" src="./index.js"></script>
+        <script>
+            try {
+                eval("``");
+                var $script = document.createElement("script");
+                $script.setAttribute("src", "./ticks.js");
+                document.body.appendChild($script);
+            } catch(e) {
+                describe(
+                    "@gardenhq/tick-control/ticks",
+                    function()
+                    {
+                        it.skip("This browser doesn't support parsing of backticks");
+                    }
+                );
+            }
+        </script>
+        <script>
+            mocha.run();
+        </script>
+	</body>
+</html>
