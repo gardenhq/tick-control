@@ -212,8 +212,9 @@ new TemplateLiteral(document.querySelectorAll("#template").textContent).transfor
 or for the more functional inclined:
 
 ```
+var render = TemplateLiteral;
 console.log(
-    TemplateLiteral(document.querySelectorAll("#template").textContent, vars, html)
+    render(document.querySelectorAll("#template").textContent, vars, html)
 )
 
 ```
@@ -223,16 +224,11 @@ console.log(
 [See an example here](https://greenhouse.gardenhq.io/tick-control/examples/o.html)
 
 
-
 Have a look in the /examples/ folder of the repo, and as always /test/ is a good place to look.
 
 ## Why not?
 
-We haven't added native parsing for browsers that support backticks **yet**, so everyone gets the (we would imagine) slower non-native parsing. This is basically what `@gardenhq/parse-template-literal` does. `@gardenhq/tick-control` is a replacement for that, so we'll be merging that in soon so we get the best of both worlds.
-
-It uses `Function()` under-the-hood. If this instills fear in your bones, then so be it, you'll have to keep running `npm` with `webpack` with `babel` and a thousand-and-one third party modules on your system, much less likely to be mischievous ;).
-
-Joking aside, as always, be aware of loading things in you don't control, whether that's via `<script>` tags, `Function`, `eval` or `$ node`.
+It uses `Function()` under-the-hood. As always, be aware of loading things in you don't control, whether that's via `<script>` tags, `Function`, `eval` or `$ node`.
 
 
 ## Installation and usage
@@ -264,11 +260,11 @@ console.log(str);
 #### Asynchronous loading
 
 ```javascript
-// use any 'promised require' such as @gardenhq/o
-Systemlike.import("@gardenhq/tick-control/index.js").then(
+// use any 'import-like', or 'promised require' such as @gardenhq/o
+importlike("@gardenhq/tick-control/index.js").then(
     function(tickControl)
     {
-        return tickControl(Systemlike.import.bind(Systemlike));
+        return tickControl(importlike);
     }
 ).then(
     function(TemplateLiteral)

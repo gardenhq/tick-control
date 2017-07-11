@@ -2,6 +2,7 @@
 
 module.exports = function(untick)
 {
+    // needs to be named for recursion
     return function parse(str)
     {
         var

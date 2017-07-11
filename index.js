@@ -1,11 +1,13 @@
-module.exports = function(promisedRequire)
+module.exports = function(promisedRequire, renderer)
 {
+    var hasStringRaw = typeof String.raw !== "undefined";
     return Promise.all(
         [
             __dirname + "/engine.js",
+            typeof renderer === "undefined" ? __dirname + "/renderer/" + (hasStringRaw ? "native": "non-native") + ".js" : renderer,
+            hasStringRaw ? String.raw : __dirname + "/tag/raw.js",
             __dirname + "/parser/javascript.js",
-            __dirname + "/parser/untick.js",
-            typeof String.raw === "function" ? String.raw : __dirname + "/tag/raw.js"
+            __dirname + "/parser/untick.js"
         ].map(
             function(item)
             {
@@ -16,9 +18,9 @@ module.exports = function(promisedRequire)
         function(modules)
         {
             return (
-                function(factory, parser, untick, raw)
+                function(factory, renderer, transformer, parser, untick)
                 {
-                    return factory(parser(untick), raw);
+                    return factory(renderer(), transformer, parser(untick));
                     // return arguments[0].apply(null, [].slice.apply(arguments, [1]));
                 }
             ).apply(null, modules);

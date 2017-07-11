@@ -56,16 +56,26 @@ module.exports = function()
                 service + "parser",
                 service + "engine",
                 service + "raw",
-                "@package.main",
+                "@package.index",
+                // null,
+                // null,
+                // null,
+                // null,
+                // null,
                 typeof document === "undefined" ? {} : "@hyperhtml",
                 "@hyperx",
                 "@test.expect"
             ]
         },
-        "package.main": {
+        "gardenhq.tick-control.renderer.non-native.object": {
+            "object": root + "/renderer/non-native.js",
+            "bundle": false
+        },
+        "package.index": {
             "callable": root + "/index.js",
             "arguments": [
-                "@willow.system.import"
+                "@willow.system.import",
+                "@gardenhq.tick-control.renderer.non-native.object"
             ]
         },
         "hyperhtml": {
